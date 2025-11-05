@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Search, Zap, Battery, Car, Sun, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
-import Bot from "@/components/AnimateRobot"
+import { Search, Zap, Battery, Car, Sun, ArrowRight, Sparkles, ChevronDown, Bot } from 'lucide-react';
+import AnimateRobot from "@/components/AnimateRobot"
 export default function HeroSection() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -48,7 +48,9 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative mt-24 flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
+   <div className="relative  flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
+
+
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" style={{
@@ -87,9 +89,11 @@ export default function HeroSection() {
 
       {/* Main Content Container */}
       <div className="relative flex-1 flex items-center max-w- mb-2 mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full min-h-[700px]">
+
           {/* Left Content */}
-          <div className="space-y-8 animate-fade-in-up">
+            <div className="space-y-8 animate-fade-in-up flex flex-col justify-center">
+
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#00b151]/30 to-[#1d58af]/30 backdrop-blur-sm px-5 py-2.5 rounded-full border border-[#00b151]/50">
                 <Sparkles className="w-5 h-5 text-white animate-pulse" />
@@ -149,8 +153,15 @@ export default function HeroSection() {
           </div>
 
           {/* Right Content - 3D Animated Icons */}
- 
-            <Bot />
+     <div className="hidden sm:flex items-center justify-center h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]">
+  <div className="relative w-full h-full flex items-center justify-center">
+    <AnimateRobot />
+  </div>
+</div>
+
+
+
+           
        
         
         
