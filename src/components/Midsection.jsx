@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Car, Sun, Battery, Zap, ArrowRight } from "lucide-react";
 
 const products = [
@@ -12,6 +13,7 @@ const products = [
     alt: "Premium Electric Vehicles in Sri Lanka – Zero Emission Cars & SUVs",
     gradient: "from-blue-500 to-cyan-600",
     cta: "Explore EVs",
+    link: "/vehicle",
   },
   {
     title: "Solar Power",
@@ -22,6 +24,7 @@ const products = [
     alt: "High-Efficiency Solar Panels for Homes & Businesses in Sri Lanka",
     gradient: "from-green-500 to-emerald-600",
     cta: "View Solar Solutions",
+    link: "/solarpanel",
   },
   {
     title: "Batteries",
@@ -32,6 +35,7 @@ const products = [
     alt: "Lithium Battery Storage for Solar & EV Systems – Long Life, High Capacity",
     gradient: "from-blue-500 to-cyan-600",
     cta: "Shop Batteries",
+    link: "/batteries",
   },
   {
     title: "EV Chargers",
@@ -42,10 +46,13 @@ const products = [
     alt: "Fast EV Chargers in Sri Lanka – Home & Public Charging Stations",
     gradient: "from-green-500 to-emerald-600",
     cta: "Find Chargers",
+    link: "/chargers",
   },
 ];
 
 export default function MiscSection() {
+  const router = useRouter();
+
   return (
     <section className="relative py-20 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       {/* Animated Background Lines */}
@@ -85,12 +92,6 @@ export default function MiscSection() {
             className="animate-flow-blue"
           />
         </svg>
-
-        {/* Floating particles for extra effect */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-green-400 rounded-full animate-float-1 opacity-40"></div>
-        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-blue-400 rounded-full animate-float-2 opacity-30"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-2 h-2 bg-green-500 rounded-full animate-float-3 opacity-50"></div>
-        <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-blue-500 rounded-full animate-float-1 opacity-40"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,17 +116,10 @@ export default function MiscSection() {
                 key={idx}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
               >
-                {/* ---- Image Side with Animated Border ---- */}
-                <div
-                  className={`${
-                    isEven ? "lg:order-2" : "lg:order-1"
-                  } relative group`}
-                >
+                {/* Image Side */}
+                <div className={`${isEven ? "lg:order-2" : "lg:order-1"} relative group`}>
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                    {/* Animated gradient border */}
                     <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-75 blur-xl group-hover:opacity-100 transition-opacity duration-500`}></div>
-                    
-                    {/* Image container */}
                     <div className="relative bg-white p-2 rounded-2xl">
                       <div className="aspect-video relative overflow-hidden rounded-xl">
                         <img
@@ -138,28 +132,20 @@ export default function MiscSection() {
                   </div>
                 </div>
 
-                {/* ---- Content Side ---- */}
-                <div
-                  className={`${
-                    isEven ? "lg:order-1" : "lg:order-2"
-                  } space-y-6`}
-                >
+                {/* Content Side */}
+                <div className={`${isEven ? "lg:order-1" : "lg:order-2"} space-y-6`}>
                   <div className="flex items-center gap-3">
-                    <div
-                      className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg transform hover:scale-110 transition-transform duration-300`}
-                    >
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg transform hover:scale-110 transition-transform duration-300`}>
                       <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-800">
-                      {item.title}
-                    </h3>
+                    <h3 className="text-3xl font-bold text-gray-800">{item.title}</h3>
                   </div>
 
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {item.description}
-                  </p>
+                  <p className="text-lg text-gray-600 leading-relaxed">{item.description}</p>
 
+                  {/* 👇 Button with navigation */}
                   <button
+                    onClick={() => router.push(item.link)}
                     className={`group flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${item.gradient} text-white font-semibold rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105`}
                   >
                     <span>{item.cta}</span>
@@ -175,75 +161,17 @@ export default function MiscSection() {
       {/* Animations */}
       <style jsx>{`
         @keyframes flow-green {
-          0% {
-            transform: translateX(-200px) translateY(0);
-          }
-          50% {
-            transform: translateX(100px) translateY(-20px);
-          }
-          100% {
-            transform: translateX(-200px) translateY(0);
-          }
+          0% { transform: translateX(-200px) translateY(0); }
+          50% { transform: translateX(100px) translateY(-20px); }
+          100% { transform: translateX(-200px) translateY(0); }
         }
-
         @keyframes flow-blue {
-          0% {
-            transform: translateX(-150px) translateY(0);
-          }
-          50% {
-            transform: translateX(150px) translateY(20px);
-          }
-          100% {
-            transform: translateX(-150px) translateY(0);
-          }
+          0% { transform: translateX(-150px) translateY(0); }
+          50% { transform: translateX(150px) translateY(20px); }
+          100% { transform: translateX(-150px) translateY(0); }
         }
-
-        @keyframes float-1 {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(30px, -30px);
-          }
-        }
-
-        @keyframes float-2 {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(-40px, 40px);
-          }
-        }
-
-        @keyframes float-3 {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(20px, 25px);
-          }
-        }
-
-        .animate-flow-green {
-          animation: flow-green 15s ease-in-out infinite;
-        }
-
-        .animate-flow-blue {
-          animation: flow-blue 18s ease-in-out infinite;
-        }
-
-        .animate-float-1 {
-          animation: float-1 8s ease-in-out infinite;
-        }
-
-        .animate-float-2 {
-          animation: float-2 10s ease-in-out infinite;
-        }
-
-        .animate-float-3 {
-          animation: float-3 12s ease-in-out infinite;
-        }
+        .animate-flow-green { animation: flow-green 15s ease-in-out infinite; }
+        .animate-flow-blue { animation: flow-blue 18s ease-in-out infinite; }
       `}</style>
     </section>
   );

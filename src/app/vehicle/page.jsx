@@ -228,9 +228,9 @@ export default function ElectricVehiclesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br mt-20 from-gray-900 via-gray-800 to-black">
+    <div className="min-h-screen mt-20 bg-gray-100">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#00b151] via-[#1d58af] to-[#00b151] py-20">
+      <div className="relative overflow-hidden bg-gradient-to-r shadow-lg from-[#00b151] via-[#1d58af] to-[#00b151] py-20">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0" style={{
             backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
@@ -265,7 +265,7 @@ export default function ElectricVehiclesPage() {
       </div>
 
       {/* Categories */}
-      <div className="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-md border-b border-gray-700 shadow-lg">
+      <div className="sticky top-0 z-40 bg-gray-100/95 backdrop-blur-md  ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-hide">
             {categories.map((category) => {
@@ -277,7 +277,7 @@ export default function ElectricVehiclesPage() {
                   className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-bold whitespace-nowrap transition-all duration-300 ${
                     selectedCategory === category.name
                       ? 'bg-gradient-to-r from-[#00b151] to-[#1d58af] text-white shadow-lg scale-105'
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                      : 'border border-green-800 text-gray-700 hover:bg-gray-700'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -292,7 +292,7 @@ export default function ElectricVehiclesPage() {
       {/* Vehicle Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-green-800">
             {filteredVehicles.length} {selectedCategory} Available
           </h2>
         </div>
@@ -301,7 +301,7 @@ export default function ElectricVehiclesPage() {
           {filteredVehicles.map((vehicle) => (
             <div
               key={vehicle.id}
-              className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700 hover:border-[#00b151] transition-all duration-300 hover:shadow-2xl hover:shadow-[#00b151]/20 hover:-translate-y-2"
+              className="group bg-gray-100 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700 hover:border-[#00b151] transition-all duration-300 hover:shadow-2xl hover:shadow-[#00b151]/20 hover:-translate-y-2"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -335,26 +335,26 @@ export default function ElectricVehiclesPage() {
 
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{vehicle.name}</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{vehicle.name}</h3>
                   <p className="text-3xl font-black bg-gradient-to-r from-[#00b151] to-[#1d58af] bg-clip-text text-transparent">
                     {vehicle.price}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="flex items-center space-x-2 text-gray-300">
+                  <div className="flex items-center space-x-2 text-gray-800">
                     <Zap className="w-4 h-4 text-[#00b151]" />
                     <span className="text-sm">{vehicle.range}</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-300">
+                  <div className="flex items-center space-x-2 text-gray-800">
                     <Battery className="w-4 h-4 text-[#1d58af]" />
                     <span className="text-sm">{vehicle.battery}</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-300">
+                  <div className="flex items-center space-x-2 text-gray-800">
                     <Calendar className="w-4 h-4 text-[#00b151]" />
                     <span className="text-sm">{vehicle.year}</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-300">
+                  <div className="flex items-center space-x-2 text-gray-800">
                     <MapPin className="w-4 h-4 text-[#1d58af]" />
                     <span className="text-sm">{vehicle.location}</span>
                   </div>
@@ -378,8 +378,8 @@ export default function ElectricVehiclesPage() {
 
       {/* Vehicle Detail Modal */}
       {selectedVehicle && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in">
-          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-gray-900 rounded-3xl shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-100 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-gray-100 rounded-3xl shadow-2xl">
             <button
               onClick={() => setSelectedVehicle(null)}
               className="sticky top-4 right-4 float-right z-10 p-3 bg-red-500 hover:bg-red-600 rounded-full transition-colors shadow-lg"
@@ -463,7 +463,7 @@ export default function ElectricVehiclesPage() {
                         <Zap className="w-5 h-5" />
                         <span className="font-bold">Range</span>
                       </div>
-                      <p className="text-2xl font-bold text-white">{selectedVehicle.range}</p>
+                      <p className="text-2xl font-bold text-gray-100">{selectedVehicle.range}</p>
                     </div>
                     <div className="p-4 bg-gray-800 rounded-xl">
                       <div className="flex items-center space-x-2 text-[#1d58af] mb-2">
@@ -489,8 +489,8 @@ export default function ElectricVehiclesPage() {
                   </div>
 
                   <div className="p-6 bg-gradient-to-r from-[#00b151]/20 to-[#1d58af]/20 rounded-xl border border-[#00b151]/30">
-                    <h3 className="text-xl font-bold text-white mb-4">Description</h3>
-                    <p className="text-gray-300 leading-relaxed">{selectedVehicle.description}</p>
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">Description</h3>
+                    <p className="text-gray-800 leading-relaxed">{selectedVehicle.description}</p>
                   </div>
                 </div>
 
